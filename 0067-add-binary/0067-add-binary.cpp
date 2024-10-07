@@ -13,8 +13,7 @@ public:
             if(j>=0){
                 sum+=b[j--]-'0';
             }
-            res=char(sum%2+'0');
-            res++;
+            res=char(sum%2+'0')+res;
             c=sum/2;
         }
         return res;
