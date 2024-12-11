@@ -5,7 +5,7 @@ public:
         int n=nums.size();
         if(n==0){
             return 0;
-        }for (int num:nums){
+        }for(int num:nums){
             int temp=a;
             a=max(b+num,a);
             b=temp;
