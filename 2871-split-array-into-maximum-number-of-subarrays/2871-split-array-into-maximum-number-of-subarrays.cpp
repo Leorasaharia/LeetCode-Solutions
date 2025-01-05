@@ -23,3 +23,4 @@ public:
         return c;
     }
 };
+//tc=O(n)
