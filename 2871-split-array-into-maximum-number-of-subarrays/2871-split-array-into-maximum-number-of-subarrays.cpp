@@ -20,7 +20,6 @@ public:
                 z=-1;
             }
         }
+        return c;
     }
-    return c;
-}
 };
