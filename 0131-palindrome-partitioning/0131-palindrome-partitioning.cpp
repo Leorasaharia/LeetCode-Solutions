@@ -1,26 +1,38 @@
 class Solution {
 public:
-    vector<vector<string>> partition(string s) {
-        vector<vector<string>>res;
-        vector<string>p;
-        backtrack(s,0,p,res);
-        return res;
+    vector<vector<string>>res;
+    bool isPalindrome(string&s,int l,int r){
+        while(l<r){
+            if(s[l]!=s[r]){
+                return 0;
+            }
+            l++,r--;
+        }
+        return 1;
     }
-    void backtrack(string&s,int i,vector<string>&p,vector<vector<string>>&res){
+    void f(string&s,int i,vector<string>p){
         if(i==s.size()){
             res.push_back(p);
             return;
         }
-        for(int j=i;j<s.size();j++){
-            if(isP(s,i,j)){
-                p.push_back(s.substr(i,j-i+1));
-                backtrack(s,j+1,p,res);
-                p.pop_back();
+        int j=i;
+        while(j<s.size()){
+            if(isPalindrome(s,i,j)){
+                vector<string>new_p;
+                int k=0;
+                while(k<p.size()){
+                    new_p.push_back(p[k]);
+                    k++;
+                }
+                new_p.push_back(s.substr(i,j-i+1));
+                f(s,j+1,new_p);
             }
+            j++;
         }
     }
-    bool isP(string&s,int l,int r){
-        while(l<r)if(s[l++]!=s[r--])return false;
-        return true;
+    vector<vector<string>>partition(string s){
+        vector<string>p;
+        f(s,0,p);
+        return res;
     }
 };
