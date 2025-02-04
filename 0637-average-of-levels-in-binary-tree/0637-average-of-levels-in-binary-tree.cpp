@@ -20,8 +20,9 @@ public:
                 stk.push({n->left,l+1});
             }
         }
-        for(int i=0;m.count(i);i++)
+        for(int i=0;m.count(i);i++){
             a.push_back(m[i].first/m[i].second);
+        
         return a;
     }
 };
