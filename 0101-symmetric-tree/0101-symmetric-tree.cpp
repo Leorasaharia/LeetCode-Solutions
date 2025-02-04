@@ -9,11 +9,10 @@ private:
             return true;
         }
         if(l&&r&&l->val==r->val){
-            bool left_sym = isSymm(l->left,r->right);
-            bool right_sym = isSymm(l->right,r->left);
-            return left_sym && right_sym;
+            bool lf=isSymm(l->left,r->right);
+            bool rt=isSymm(l->right,r->left);
+            return lf && rt;
         }
         return false;
     }
 };
-//tc=o(n)
