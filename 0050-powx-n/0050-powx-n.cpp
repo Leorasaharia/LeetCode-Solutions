@@ -4,7 +4,7 @@ public:
         long long num=n;
         if(num<0){
             x=1/x;
-            num=-num+1;
+            num=-num;
         }
         double res=1;
         while(num>0){
