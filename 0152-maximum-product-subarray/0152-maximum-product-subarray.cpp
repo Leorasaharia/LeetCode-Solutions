@@ -10,6 +10,6 @@ public:
             nmin=min(n[i],nmin*n[i]); 
             mx=max(mx,nmax); 
         } 
-        return m; 
+        return mx; 
     } 
 };
