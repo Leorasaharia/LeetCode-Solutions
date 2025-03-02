@@ -1,16 +1,21 @@
 class Solution{
 public:
-    int canCompleteCircuit(vector<int>&g,vector<int>&c){
-        int t=0,cc=0,s=0,cg=0;
-        for(int i=0;i<g.size();++i){
-            t+=g[i];
-            cc+=c[i];
-            cg+=g[i]-c[i];
+    int canCompleteCircuit(vector<int>&gas,vector<int>&cost){
+        int n=gas.size();
+        int totg=0,totc=0,start=0,cg=0;
+        for(int i=0;i<n;++i){
+            totg+=gas[i];
+            totc+=cost[i];
+            cg+=gas[i]-cost[i];
             if(cg<0){
-                s=i+1;
+                start=i+1;
                 cg=0;
             }
         }
-        return t>=cc?s:-1;
+        if(totg>=totc){
+            return start;
+        }else{
+            return -1;
+        }
     }
 };
