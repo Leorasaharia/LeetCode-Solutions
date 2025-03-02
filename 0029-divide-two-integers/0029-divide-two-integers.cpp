@@ -26,21 +26,31 @@
 //         return neg?-res:res;
 //     }
 // };
-class Solution {
+
+class Solution{
 public:
-    int divide(int a, int b) {
-        if (a == INT_MIN && b == -1) return INT_MAX;
-        bool neg = (a < 0) ^ (b < 0);
-        long x = abs((long)a), y = abs((long)b), res = 0;
-        while (x >= y) {
-            long temp = y, mul = 1;
-            while (x >= (temp << 1)) {
-                temp <<= 1;
-                mul <<= 1;
-            }
-            x -= temp;
-            res += mul;
+    int divide(int a,int b){
+        if(a==INT_MIN&&b==-1){
+            return INT_MAX;
         }
-        return neg ? -res : res;
+        bool neg=(a<0)^(b<0);
+        long x=abs((long)a);
+        long y=abs((long)b);
+        int res=0;
+        while(x>=y){
+            long temp=y,mul=1;
+            while(x>=(temp<<1)){
+                temp<<=1;
+                mul<<=1;
+            }
+            x-=temp;
+            res+=mul;
+        }
+        if(neg){
+            return -res;
+        }
+        else{
+            return res;
+        }
     }
 };
