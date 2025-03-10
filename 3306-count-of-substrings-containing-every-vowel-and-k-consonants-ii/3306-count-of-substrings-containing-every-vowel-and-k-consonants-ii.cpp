@@ -1,33 +1,38 @@
 class Solution {
 public:
-    long long countOfSubstrings(string w, int k) {
-        long long res=0;
-        int n=w.size(),l=0,c=0;
-        unordered_map<char,int> vc;
-        unordered_set<char> v={'a','e','i','o','u'};
-        for(int r=0;r<n;++r){
-            char ch=w[r];
-            if(v.count(ch)){
-                vc[ch]++;
-            }else{
-                c++;
+    long long Solve(string& w, int k) {
+        int n = w.length();
+        int i = 0, j = 0;
+        long long ans = 0;
+        map<char, int> mp;
+        int cnt = 0;
+
+        while (j < n) {
+            if (w[j] == 'a' || w[j] == 'e' || w[j] == 'i' || w[j] == 'o' || w[j] == 'u') {
+                mp[w[j]]++;
+            } else {
+                cnt++;
             }
-            while(vc.size()==5&&c>k){
-                char lt=w[l];
-                if(v.count(lt)){
-                    vc[lt]--;
-                    if(vc[lt]==0){
-                        vc.erase(lt);
+
+            while (mp.size() == 5 && cnt >= k) {
+                ans += w.size() - j;
+
+                if (mp.find(w[i]) != mp.end()) {
+                    mp[w[i]]--;
+                    if (mp[w[i]] == 0) {
+                        mp.erase(w[i]);
                     }
-                }else{
-                    c--;
+                } else {
+                    cnt--;
                 }
-                l++;
+                i++;
             }
-            if(vc.size()==5&&c==k){
-                res+=(l+1);
-            }
+            j++;
         }
-        return res;
+        return ans;
+    }
+
+    long long countOfSubstrings(string w, int k) {
+        return Solve(w, k) - Solve(w, k + 1);
     }
 };
