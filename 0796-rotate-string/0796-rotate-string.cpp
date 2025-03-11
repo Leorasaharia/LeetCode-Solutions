@@ -4,10 +4,17 @@ public:
         if(s.length()!=g.length()){
             return false;
         }
-        string t=s+s;
-        size_t f=t.find(g);
-        if(f!=string::npos){
-            return true;
+        for(int i=0;i<s.length();i++){
+            bool m=true;
+            for(int j=0;j<s.length();j++){
+                if(s[(i+j)%s.length()]!=g[j]) {
+                    m=false;
+                    break;
+                }
+            }
+            if(m){
+                return true;
+            }
         }
         return false;
     }
