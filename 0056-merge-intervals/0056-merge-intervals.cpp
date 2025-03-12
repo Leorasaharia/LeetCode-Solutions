@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& ivl) {
-        vector<vector int>> arr;
+        vector<vector<int>> arr;
         int a=ivl.size();
         if(a==0 || a==-1){
             return arr;
