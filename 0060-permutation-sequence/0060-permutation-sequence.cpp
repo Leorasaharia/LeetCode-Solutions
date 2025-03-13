@@ -17,7 +17,7 @@ public:
             int cnt=0;
             while(j<n){
                 if(!nums[j]){
-                    if(cntt==pos){
+                    if(cnt==pos){
                         break;
                     }
                     cnt++;
