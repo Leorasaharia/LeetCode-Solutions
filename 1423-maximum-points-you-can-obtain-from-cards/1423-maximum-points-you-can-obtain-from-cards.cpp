@@ -4,7 +4,7 @@ public:
         int n=cp.size();
         int sum=0;
         for(int i=0;i<k;i++){
-            s+=cp[i];
+            sum+=cp[i];
         }
         int ans=sum;
         for(int i=1;i<=k;i++){
