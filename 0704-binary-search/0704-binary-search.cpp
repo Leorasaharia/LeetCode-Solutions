@@ -1,10 +1,12 @@
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        int beg=0,end=nums.size()-1,mid;
+        int beg=0;
+        int end=nums.size()-1;
+        long long mid;
         while(beg<=end){
             mid=beg;
-            while(mid+mid<beg+end){
+            while(2*mid<beg+end){
                 mid++;
             }
             if(nums[mid]-target==0){
