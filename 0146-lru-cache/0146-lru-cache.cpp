@@ -1,36 +1,30 @@
 class LRUCache {
 public:
     int cap;
-    vector<int> keys,vals;
-    LRUCache(int capacity){
-        cap=capacity;
+    list<pair<int, int>> l;
+    unordered_map<int, list<pair<int, int>>::iterator> m;
+
+    LRUCache(int capacity) {
+        cap = capacity;
     }
-    int get(int key){
-        for (int i=0;i<keys.size();i++){
-            if (keys[i]==key) {
-                int val=vals[i];
-                keys.erase(keys.begin()+i);
-                vals.erase(vals.begin()+i);
-                keys.push_back(key);
-                vals.push_back(val);
-                return val;
-            }
-        }
-        return -1;
+
+    int get(int key) {
+        if (m.find(key) == m.end()) return -1;
+        int val = m[key]->second;
+        l.erase(m[key]);
+        l.push_front({key, val});
+        m[key] = l.begin();
+        return val;
     }
-    void put(int key, int value){
-        for(int i=0;i<keys.size();i++){
-            if (keys[i]==key){
-                keys.erase(keys.begin()+i);
-                vals.erase(vals.begin()+i);
-                break;
-            }
-        }
-        keys.push_back(key);
-        vals.push_back(value);
-        if(keys.size()>cap) {
-            keys.erase(keys.begin());
-            vals.erase(vals.begin());
+
+    void put(int key, int value) {
+        if (m.find(key) != m.end()) l.erase(m[key]);
+        l.push_front({key, value});
+        m[key] = l.begin();
+        if (l.size() > cap) {
+            int old = l.back().first;
+            l.pop_back();
+            m.erase(old);
         }
     }
 };
