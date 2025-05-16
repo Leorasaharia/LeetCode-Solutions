@@ -1,12 +1,14 @@
 class Solution {
 public:
-    TreeNode* invertTree(TreeNode* r) {
-        if(!r){
-            return r;
+    TreeNode* invertTree(TreeNode*root) {
+        if(root==0){
+            return 0;
         }
-        swap(r->left, r->right);
-        invertTree(r->left);
-        invertTree(r->right);
-        return r;
+        TreeNode*l=invertTree(root->left);
+        TreeNode*r=invertTree(root->right);
+        TreeNode*temp=l;
+        root->left=r;
+        root->right=temp;
+        return root;
     }
 };
