@@ -1,35 +1,34 @@
-class Solution {
+class Solution{
 public:
-    int splitArray(vector<int>&a,int k) {
-        int n=a.size();
-        if(k>n){
-            return -1;
-        }
-        int mn=INT_MAX;
-        long long t=1LL<<(n-1);
-        for(long long m=0;m<t;m++){
-            int s=0;
-            for(int i=0;i<n-1;i++)
-                if(m&(1LL<<i)){
-                    s++;
-                }
-            if(s!=k-1){
-                continue;
+    int splitArray(vector<int>&a,int k){
+        int l=0,r=0;
+        for(int i=0;i<(int)a.size();i++){
+            if(a[i]>l){
+                l=a[i];
             }
-            int mx=0,c=0;
-            for(int i=0;i<n;i++){
-                c+=a[i];
-                if(i==n-1||(m&(1LL<<i))){
-                    if(c>mx){
-                        mx=c;
-                    }
-                    c=0;
+            r+=a[i];
+        }
+        while(l<r){
+            int m=l+(r-l)/2;
+            int c=1,s=0;
+            for(int i=0;i<(int)a.size();i++){
+                if(s+a[i]>m){
+                    c++;
+                    s=a[i];
+                }else{
+                    s+=a[i];
+                }
+                if(c>k){
+                    break;
                 }
             }
-            if(mx<mn){
-                mn=mx;
+            if(c>k){
+                l=m+1;
+            }
+            else{
+                r=m;
             }
         }
-        return mn;
+        return l;
     }
 };
