@@ -8,7 +8,8 @@ public:
             int end=(goal/mask)%2;
             if(st!=end){
                 cnt++;
-            mask=2*mask;
+            }
+            mask=mask*2;
         }
         return cnt;
     }
