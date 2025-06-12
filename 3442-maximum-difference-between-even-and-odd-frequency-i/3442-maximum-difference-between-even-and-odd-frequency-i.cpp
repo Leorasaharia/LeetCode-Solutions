@@ -2,8 +2,8 @@ class Solution {
 public:
     int maxDifference(string s) {
         int f[26]={0};
-        for(char c:s){
-            f[c-'a']++;
+        for(char x:s){
+            f[x-'a']++;
         }
         for(int i=0;i<25;i++){
             for(int j=0;j<25-i;j++){
@@ -14,21 +14,23 @@ public:
                 }
             }
         }
-        int od=-1, ev=-1;
+        int o=0,e=101;
         for(int i=0;i<26;i++){
             if(f[i]==0){
                 break;
             }
-            if(od==-1 && f[i]%2==1){
-                od=f[i];
-            }
-            if(ev==-1 && f[i]%2==0){
-                ev=f[i];
-            }
-            if(od!=-1 && ev!=-1){
-                break;
+            if(f[i]%2==1 && f[i]>o){
+                o=f[i];
             }
         }
-        return od-ev;
+        for(int i=0;i<26;i++){
+            if(f[i]==0){
+                break;
+            }
+            if(f[i]%2==0 && f[i]<e){
+                e=f[i];
+            }
+        }
+        return o-e;
     }
 };
