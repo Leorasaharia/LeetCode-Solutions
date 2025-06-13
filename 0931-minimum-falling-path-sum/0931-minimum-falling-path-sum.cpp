@@ -31,18 +31,17 @@ public:
                     mn=rd;
                 }
                 cur[j]=mn;
-                int k=j;
-                while(k>0 && cur[k]<cur[k-1]){
-                    int t=cur[k];
-                    cur[k]=cur[k-1];
-                    cur[k-1]=t;
-                    k--;
-                }
             }
             for(int j=0;j<m;j++){
                 prev[j]=cur[j];
             }
         }
-        return prev[0];
+        int ans=prev[0];
+        for(int j=1;j<m;j++){
+            if(prev[j]<ans){
+                ans=prev[j];
+            }
+        }
+        return ans;
     }
 };
