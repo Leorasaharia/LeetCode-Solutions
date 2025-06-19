@@ -1,26 +1,14 @@
-class Solution{
+class Solution {
 public:
-    int partitionArray(vector<int>&a,int k){
-        int n=a.size();
-        int mx=1e5+1;
-        vector<int>cnt(mx,0);
-        for(int i=0;i<n;i++){
-            cnt[a[i]]++;
-        }
-        vector<int>b;
-        for(int i=0;i<mx;i++){
-            while(cnt[i]--){
-                b.push_back(i);
+    int partitionArray(vector<int>&nums,int k){
+        sort(nums.begin(),nums.end());
+        int beg=0,cnt=1;
+        for(int end=1;end<nums.size();end++){
+            if(nums[end]-nums[beg]>k){
+                cnt++;
+                beg=end;
             }
         }
-        int c=1;
-        int m=b[0];
-        for(int i=1;i<n;i++){
-            if(b[i]-m>k){
-                c++;
-                m=b[i];
-            }
-        }
-        return c;
+        return cnt;
     }
 };
