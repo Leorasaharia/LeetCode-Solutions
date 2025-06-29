@@ -11,12 +11,12 @@ public:
         int i=0;
         int j=n-1;
         int cnt=0;
-        while(i<=j){
-            if(nums[i]+nums[j]<=t){
+        while(i<=j){ //2 pointers
+            if(nums[i]+nums[j]<=t){ //total valid subsequences hai in this range 
                 cnt=(cnt+pow[j-i])%mod;
-                i++;
+                i++; //nums[i] ko fix karenge
             }else{
-                j--;
+                j--;//reduce max if if bigger
             }
         }
         return cnt;
