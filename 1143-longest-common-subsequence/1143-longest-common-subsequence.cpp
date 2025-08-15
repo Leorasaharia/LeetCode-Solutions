@@ -1,15 +1,14 @@
 class Solution {
 public:
-    int longestCommonSubsequence(string a, string b) {
-        int x=a.size();
-        int y=b.size();
-        int dp[x+1][y+1];
-        for(int i=0;i<=x;i++){
-            for(int j=0;j<=y;j++){
+    int longestCommonSubsequence(string text1, string text2) {
+        int n=text1.size();
+        int m=text2.size();
+        int dp[n+1][m+1];
+        for(int i=0;i<=n;i++){
+            for (int j=0;j<=m;j++){
                 if(i==0||j==0){
                     dp[i][j]=0;
-                }
-                else if(a[i-1]==b[j-1]){
+                }else if(text1[i-1]==text2[j-1]){
                     dp[i][j]=1+dp[i-1][j-1];
                 }
                 else{
@@ -17,6 +16,6 @@ public:
                 }
             }
         }
-        return dp[x][y];
+        return dp[n][m];
     }
 };
