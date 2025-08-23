@@ -4,7 +4,6 @@ public:
         int m=grid.size();
         int n=grid[0].size();
         int time=0,nw=0;
-        
         while(1){
             nw=0;
             vector<vector<int>>temp=grid;
