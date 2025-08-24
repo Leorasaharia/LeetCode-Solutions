@@ -4,12 +4,13 @@ public:
     vector<vector<int>>res;  
     int dx[4]={1,-1,0,0}; 
     int dy[4]={0,0,1,-1};
+
     void dfs(int r,int c,vector<vector<int>>& heights,vector<vector<int>>& vis){
         vis[r][c]=1;
-        for(int k=0;k<4;k++)
+        for(int k=0;k<4;k++){  
             int nr=r+dx[k];
             int nc=c+dy[k];
-            if(nr<0 ||nc<0||nr>=r||nc>=c){
+            if(nr<0 || nc<0 || nr>=this->r || nc>=this->c){
                 continue;
             }
             if(vis[nr][nc]){
