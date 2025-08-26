@@ -11,7 +11,7 @@ public:
                 st.pop();
                 if(st.empty()){
                     st.push(i);
-                } else {
+                }else{
                     maxln=max(maxln,i-st.top());
                 }
             }
