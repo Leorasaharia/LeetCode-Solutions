@@ -9,20 +9,20 @@ public:
         }
         if(up){ //to travrese in up-right dirn
             if(j==n-1){
-                dfs(mat,i+1,j,up=0);
+                dfs(mat,i+1,j,!up);
             }
             else if(i==0){
-                dfs(mat,i,j+1,up=0);
+                dfs(mat,i,j+1,!up);
             }
             else{
                 dfs(mat,i-1,j+1,up);
             }
         }else{ //in down-left dirn
             if(i==m-1){
-                dfs(mat,i,j+1,up=0);
+                dfs(mat,i,j+1,!up);
             }
             else if(j==0){
-                dfs(mat,i+1,j,up=0);
+                dfs(mat,i+1,j,!up);
             }
             else{
                 dfs(mat,i+1,j-1,up);
