@@ -1,27 +1,15 @@
 class Solution {
 public:
-    bool isSquare(int x){
-        int n=floor(sqrt(x)); 
-        return n*n==x;
-    }
     int numSquares(int n){
-        if(isSquare(n)){
-            return 1;
-        }
-        for(int i=1;i*i<=n;i++){
-            int rem=n-i*i;
-            if(isSquare(rem)){
-                return 2;
+        vector<int> dp(n+1,INT_MAX);
+        dp[0]=0;// base case
+        for(int x=1;x<=n;x++){
+            int limit=sqrt(x);// max square we can use
+            for(int k=1;k<=limit;k++){
+                int sq=k*k;
+                dp[x]=min(dp[x],dp[x-sq]+1);
             }
         }
-        for(int i=1;i*i<=n;i++){
-            for(int j=1;j*j<=n;j++){
-                int rem=n-i*i -j*j;
-                if(rem>=0 && isSquare(rem)){
-                    return 3;
-                }
-            }
-        }
-        return 4;
+        return dp[n];
     }
 };
