@@ -6,11 +6,11 @@ public:
         int a=ivls.size();
         sort(ivls.begin(),ivls.end());
         arr.push_back(ivls[0]);
-        int n=0;
+        long long n=0;
         for(int i=1;i<a;i++){
             if(arr[n][1]>=ivls[i][0]) {
                 arr[n][1]=max(arr[n][1],ivls[i][1]);
-            } else {
+            }else{
                 n++;
                 arr.push_back(ivls[i]);
             }
