@@ -15,23 +15,22 @@ public:
         int cnt=0;
         for(int i=0;i<n;i++){
             if(vis[i]==0){
-            cnt++;
-            }
-        }
-         queue<int> q; 
-         q.push(i); 
-         vis[i]=1;
-            while(q.empty()==0){
-                int fr=q.front();
-                q.pop();
-                for(int y:adj[x]){
-                    if(vis[y]!=0){
-                        vis[y]=1;
-                        q.push(y);
+                cnt++;
+                queue<int> q;
+                q.push(i);
+                vis[i]=1;
+                while(q.empty()==0){
+                    int fr=q.front();
+                    q.pop();
+                    for(int y:adj[fr]){
+                        if(!vis[y]){
+                            vis[y]=1;
+                            q.push(y);
+                        }
                     }
                 }
             }
-            return n-cnt;
         }
+        return n-cnt;
     }
 };
