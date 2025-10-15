@@ -32,7 +32,7 @@ public:
             }
         }
         for(int i=0;i+2*k<=n;i++){
-            if(len[i]>=k&&len[i+k]>=k){
+            if(len[i]>=k && len[i+k]>=k){
                 return true;
             }
         }
