@@ -7,7 +7,7 @@ public:
         int ans=0;
         while(beg<=end){
             int mid=beg+(end-beg)/2;
-            if(ok(mid,nums)){
+            if(subarrays(mid,nums)){
                 ans=mid;
                 beg=mid+1;
             }else{
@@ -17,7 +17,7 @@ public:
         return ans;
     }
 
-    bool ok(int k,vector<int>&arr){
+    bool subarrays(int k,vector<int>&arr){
         int n=arr.size();
         if(2*k>n){
             return false;
