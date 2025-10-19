@@ -6,7 +6,7 @@ public:
         unordered_set<string>vis;
         string ans=s;
         q.push(s);
-        visited.insert(s);
+        vis.insert(s);
         while(!q.empty()){
             string cur=q.front();
             q.pop();
