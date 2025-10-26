@@ -8,18 +8,29 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-#define n next
 class Solution {
 public:
-    ListNode* deleteDuplicates(ListNode* h) {
-        ListNode *p=h;
-        while(p&&p->n){
-            if(p->val==p->n->val){
-                p->n=p->n->n;
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head==NULL){
+            return NULL;
+        }
+        ListNode* a=head;
+        ListNode* b=head->next;
+        int end=head->val;
+        while(b!=NULL){
+            if(b->val==end){
+                if(b->next==NULL){
+                    a->next=NULL;
+                    break;
+                }
+                b=b->next;
+                a->next=b;
             }else{
-                p=p->n;
+                a=b;
+                end=a->val;
+                b=b->next;
             }
         }
-        return h;
+        return head;
     }
 };
