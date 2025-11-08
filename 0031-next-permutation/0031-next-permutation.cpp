@@ -1,7 +1,10 @@
 class Solution {
 public:
-    void nextPermutation(vector<int>&nums){
+    void nextPermutation(vector<int>& nums) {
         int n=nums.size();
+        if(n<2){
+            return;
+        }
         int i=n-2;
         while(i>=0 && nums[i]>=nums[i+1]){
             i--;
@@ -11,18 +14,12 @@ public:
             while(nums[j]<=nums[i]){
                 j--;
             }
-            int temp=nums[i];
-            nums[i]=nums[j];
-            nums[j]=temp;
+            swap(nums[i],nums[j]);
         }
-        int l=i+1;
-        int r=n-1;
-        while(l<r){
-            int temp=nums[l];
-            nums[l]=nums[r];
-            nums[r]=temp;
-            l++;
-            r--;
+        int left=i+1;
+        int right=n-1;
+        while(left<right){
+            swap(nums[left++],nums[right--]);
         }
     }
 };
